@@ -15,5 +15,13 @@
   },
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itMikeDev/sealex-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itMikeDev/sealex-test/issues"
+  },
+  "homepage": "https://github.com/itMikeDev/sealex-test#readme",
   "description": ""
 }

@@ -293,7 +293,7 @@ h2{
     background: #169DD7;
     position: absolute;
     color: white;
-    border: 1ps solid #169DD7;
+    border: 1px solid #169DD7;
     padding: 7px 16px;
     font-size: 12px;
     width: auto;

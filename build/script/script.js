@@ -70,31 +70,44 @@ var divToolTips = document.createElement("div");
 var inputPhonePOsition = inputPhone.offsetTop;
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    inputPhone.onfocus = function () {
+    inputPhone.addEventListener("touchstart", touchPhoneStart);
+
+    function touchPhoneStart() {
         setTimeout(function () {
             divToolTips.classList.add("div-tool-tips");
             divToolTips.innerHTML = "Only digit!";
-            divToolTips.style.top = inputPhone.offsetTop - inputPhone.getBoundingClientRect().height / 1.4 + "px";
-            divToolTips.style.left = inputPhone.offsetLeft + "px";
-            document.body.appendChild(divToolTips);
-        }, 300);
+            /* divToolTips.style.top = inputPhone.offsetTop - inputPhone.getBoundingClientRect().height / 1.4 + "px";
+            divToolTips.style.left = inputPhone.offsetLeft + "px"; */
+            divToolTips.style.position = "static";
+            divToolTips.style.marginBottom = "-3px";
+            divToolTips.style.marginRight = "auto";
+            inputPhone.before(divToolTips);
+
+        }, 400);
     };
 
-    inputPhone.onblur = function () {
+    inputPhone.addEventListener("touchend", touchPhoneEnd);
+
+    function touchPhoneEnd() {
         divToolTips.remove();
     };
 
-    inputText.onfocus = function () {
+    inputText.addEventListener("touchstart", touchTextStart);
+    function touchTextStart() {
         setTimeout(function () {
             divToolTips.classList.add("div-tool-tips");
             divToolTips.innerHTML = "Example : Michael Kozlov!";
-            divToolTips.style.top = inputText.offsetTop + inputText.getBoundingClientRect().height + "px";
-            divToolTips.style.left = inputText.offsetLeft + "px";
-            document.body.appendChild(divToolTips);
-        }, 300);
+            /* divToolTips.style.top = inputText.offsetTop + inputText.getBoundingClientRect().height + "px";
+            divToolTips.style.left = inputText.offsetLeft + "px"; */
+            divToolTips.style.position = "static";
+            divToolTips.style.marginBottom = "-3px";
+            divToolTips.style.marginRight = "auto";
+            inputPhone.after(divToolTips);
+        }, 400);
     };
 
-    inputText.onblur = function () {
+    inputText.addEventListener("touchend", touchTextEnd);
+    function touchTextEnd() {
         divToolTips.remove();
     };
 } else {
